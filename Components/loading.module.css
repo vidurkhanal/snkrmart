@@ -1,0 +1,16 @@
+.loading {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading > h3 {
+  padding-top: 30px;
+  color: rgb(63, 61, 61);
+}
+
+.circle {
+  color: red !important;
+}

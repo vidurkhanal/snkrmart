@@ -1,0 +1,17 @@
+.brand > h1 {
+  display: none;
+}
+
+.loading {
+  display: grid;
+  height: 100vh;
+  place-items: center;
+}
+
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  width: 90vw;
+  margin-left: auto;
+  margin-right: auto;
+}
