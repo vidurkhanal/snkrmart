@@ -82,7 +82,7 @@ export default function myaccount() {
                   </p>
                   <p>
                     <span className={styles.category}>User Id</span>{" "}
-                    <span>{user.uid}</span>
+                        <span>{user.uid.slice(0, 5)}*******</span>
                   </p>
                   <p>
                     <span className={styles.category}>Phone Number </span>{" "}
@@ -92,10 +92,14 @@ export default function myaccount() {
                     <span className={styles.category}>Member Since </span>
                     <span>{`${user.metadata.creationTime.slice(4, 16)}`}</span>
                   </p>
+                      <div className={styles.buttons}>
+                        <button className={styles.orderButton}><span>Orders And Receipts</span></button>
                   <button onClick={signOut}>
                     <span>Log Out</span>
                   </button>
-                </div>
+                  </div>
+
+                    </div>
               )}
             </div>
           </main>

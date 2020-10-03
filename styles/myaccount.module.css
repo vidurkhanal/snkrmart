@@ -89,6 +89,7 @@
     align-items: center; 
     justify-content: center;
     position: relative;   
+    min-width: fit-content;
 }
 
 .accountInfo button:hover{
@@ -99,4 +100,63 @@
 
 .accountInfo p>.category{
     color: rgb(161, 160, 160);
+    margin-right: 20px;
+}
+
+@media (max-width:930px){
+    .myaccount>main{
+        margin: 0 auto;
+        flex-direction: column;
+        width: 90%;
+        max-width: 90vw;
+        width: 100%;
+        min-width: max-content;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 50px;
+        background: white;
+    }
+
+    .avatar{
+        margin: 0 auto;
+       border-radius: 0;
+       height: fit-content;
+       background: none;
+    }
+
+    .avatar img{
+        border: 3px solid black;
+    }
+
+    .avatar>div>h1{
+        display: none;
+    }
+
+    .info{
+        margin: 0 auto;
+        border-radius: 0;
+        min-width: 90%;
+        max-width: 100%;
+    }
+
+    .loadingInfo{
+        display: none;
+    }
+    
+}
+.buttons{
+    display: flex;
+}
+
+.orderButton{
+    background: rebeccapurple !important;
+    color: white !important;
+    border: white !important;
+    margin-right:20px !important;
+}
+
+.orderButton:hover{
+    color: rebeccapurple !important;
+    background: none !important;
+    border: 1px solid rebeccapurple !important;
 }
