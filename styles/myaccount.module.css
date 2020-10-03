@@ -1,0 +1,102 @@
+.myaccount>main{
+    margin: 20px 50px;
+    display: flex;
+    max-width: 80vw;
+}
+
+.avatar{
+    flex: 1;
+    padding: 50px;
+    background: white;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    border-radius: 10px;
+    color: rgb(95, 94, 94);
+}
+
+.avatar>div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.avatar>div>h1{
+    font-weight: normal;
+}
+
+.avatar>div>img{
+        vertical-align: middle;
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        margin-bottom: 10px;
+}
+
+.info{
+    flex: 2;
+    margin-left: 30px;
+    background:white;
+    border-radius: 10px;
+}
+
+.loadingInfo{
+    display: grid;
+    place-items: center;
+    height: 100%;
+}
+
+.loadingInfo>div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.accountInfo{
+    padding: 50px 50px 50px 50px;
+}
+
+.accountInfo>h1{
+    width: 100%;
+    color:rgb(87, 84, 62);
+    margin-bottom: 10px;
+}
+
+.accountInfo p{
+    font-size: 20px;
+    padding: 20px;
+    border-bottom: 1px solid rgb(161, 160, 160);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-weight: 500;
+    color:rgb(87, 84, 62) ;
+}
+
+
+.accountInfo button{
+    padding: 10px 30px;
+    margin: 30px 10px 0 10px;
+    background: none;
+    outline: none;
+    border: 1px solid red;
+    color:red;
+    font-size: 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    position: relative;   
+}
+
+.accountInfo button:hover{
+    background: red;
+    color: white;
+}
+
+
+.accountInfo p>.category{
+    color: rgb(161, 160, 160);
+}

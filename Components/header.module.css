@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   margin: 30px 0;
-  width: 100vw;
+  width: 90vw;
   overflow-x: scroll;
   padding: 10px;
 }
@@ -31,4 +31,8 @@
 
 .headerIcon:hover > img {
   transform: scale(1.2);
+}
+
+.last{
+  margin-right: 50px;
 }

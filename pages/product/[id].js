@@ -42,11 +42,11 @@ export default function IndividualPage({ sneaker, stripeKey }) {
               }}
               style={{ cursor: "pointer" }}
             >
-              <motion.img
-                src="https://bintangraya.com/assets/back/dist/css/ionicons/png/512/arrow-left-c.png"
+              <img
+                src="/arrow.png"
                 alt="Go Back"
                 className={styles.logo}
-                whileHover={{ scale: 1.2 }}
+                
               />
             </div>
 

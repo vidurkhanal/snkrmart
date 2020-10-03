@@ -17,10 +17,7 @@ export default function Header({ setLoading, setLoadingMessage }) {
             setTimeout(() => setLoading(false), 3000);
           }}
         >
-          <img
-            src="https://i.pinimg.com/originals/20/60/2d/20602d43cc993811e5a6bd1886af4f33.png"
-            alt="Nike Logo"
-          />
+          <img src="/brands/nike.png" alt="Nike Logo" />
         </div>
         {/* Air Jordan */}
         <div
@@ -32,7 +29,7 @@ export default function Header({ setLoading, setLoadingMessage }) {
           }}
         >
           <img
-            src="https://seeklogo.com/images/A/air-jordan-logo-66B3A1FAAF-seeklogo.com.png"
+            src="/brands/jordan.png"
             alt="Air Jordan Logo"
           />
         </div>
@@ -46,7 +43,7 @@ export default function Header({ setLoading, setLoadingMessage }) {
           }}
         >
           <img
-            src="https://www.freepngimg.com/thumb/adidas/58143-stan-logo-smith-shoe-adidas-free-frame.png"
+            src="/brands/adidas.png"
             alt="Adidas Logo"
           />
         </div>
@@ -60,7 +57,7 @@ export default function Header({ setLoading, setLoadingMessage }) {
           }}
         >
           <img
-            src="https://logos-download.com/wp-content/uploads/2018/05/Champion_logo_black.png"
+            src="/brands/champions.png"
             alt="Champions Logo"
           />
         </div>
@@ -74,7 +71,7 @@ export default function Header({ setLoading, setLoadingMessage }) {
           }}
         >
           <img
-            src="https://cdn.freebiesupply.com/logos/large/2x/converse-4610-logo-png-transparent.png"
+            src="/brands/converse.png"
             alt="Converse Logo"
           />
         </div>
@@ -89,7 +86,7 @@ export default function Header({ setLoading, setLoadingMessage }) {
           }}
         >
           <img
-            src="https://pngimg.com/uploads/gucci/gucci_PNG4.png"
+            src="/brands/gucci.png"
             alt="Gucci Logo"
           />
         </div>
@@ -103,8 +100,9 @@ export default function Header({ setLoading, setLoadingMessage }) {
           }}
         >
           <img
-            src="https://www.freepnglogos.com/uploads/vans-logo-png/vans-of-the-wall-logo-png-car-symbol-5.png"
+            src="/brands/vans.png"
             alt="Vans Logo"
+            className={styles.last}
           />
         </div>
       </div>

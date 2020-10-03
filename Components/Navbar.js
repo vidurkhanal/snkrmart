@@ -10,15 +10,31 @@ import { useAuth } from "../utils/useAuth";
 import { useState } from "react";
 import { CircularProgress } from "@material-ui/core";
 
-export default function Navbar({
-  setLoading,
-  setLoadingMessage,
-  disabledLink,
-}) {
+export default function Navbar({ setLoading, setLoadingMessage, disabledLink, noLinks }) {
   const loginStatus = Cookies.get("isLoggedInToSnkrMart");
   const [isDataRetrieved, setIsDataRetrieved] = useState();
   const auth = useAuth();
   const router = useRouter();
+
+  if (noLinks)  {
+    return (
+      <div className={styles.navbar}>
+        <img
+          src="/logo.png"
+          alt="SnkrMart"
+          className={styles.logo}
+          onClick={()=> {setLoading(true);
+            setLoadingMessage("Going Back To Home ...");
+            setTimeout(() => {
+              router.push("/");
+            }, 2000)}}
+          style={{ cursor: "pointer" }}
+        />
+    </div>
+    
+    )
+  }
+
   return (
     <div className={styles.navbar}>
       <img

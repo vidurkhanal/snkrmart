@@ -41,22 +41,7 @@ export default function login() {
               />
               <p>Sign In With Google</p>
             </button>
-            <button
-              onClick={() => {
-                setLoading(true);
-                setLoadingMessage("Bouncing Back As A Guest...");
-                setTimeout(() => {
-                  router.push("/");
-                }, 3000);
-              }}
-            >
-              {" "}
-              <img
-                src="https://i.dlpng.com/static/png/6456214_preview.png"
-                alt="Guest Png"
-              />
-              <p>Just Browsing Shoes?</p>
-            </button>
+
             <h5>Yes ,We Are Only Accepting Google Login For Now.</h5>
           </div>
         </>
