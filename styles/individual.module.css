@@ -85,6 +85,10 @@
   height: 9vh;
 }
 
+.logo:hover{
+  transform: scale(1.2);
+}
+
 @media (max-width: 1155px) {
   .main {
     flex-direction: column;

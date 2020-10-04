@@ -1,26 +1,36 @@
 import styles from "../../styles/individual.module.css";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useRef, useState,useEffect } from "react";
 import { motion } from "framer-motion";
 import { useAuth } from "../../utils/useAuth";
 import Loading from "../../Components/Loading";
-import StripeCheckout from "react-stripe-checkout";
+import CheckOutForm from "../../Components/CheckOutForm";
 
 const removeTags = (str) => {
   str = str.toString();
   return str.replace(/(<([^>]+)>)/gi, "");
 };
 
-export default function IndividualPage({ sneaker, stripeKey }) {
-  console.log(process.env.PUBLISHABLE_KEY);
+export default function IndividualPage({ sneaker }) {
   const [loading, setLoading] = useState(false);
   const [loadingMessage, setLoadingMessage] = useState("");
+  const [isCheckingOut,setIsCheckingOut]=useState(false)
   const router = useRouter();
   const auth = useAuth();
-  const handleToken = (token, PaymentAddress) => {
-    console.log(token, PaymentAddress);
-  };
+
+  const handleCheckOut = () => {
+    setLoading(true)
+    setLoadingMessage("Preparing Checkout Options For You. Please Don't Refresh Or Close The Window.")
+    setTimeout(()=>{
+      setIsCheckingOut(true)
+    },1000)
+  }
+  
+  if (isCheckingOut){
+    return <CheckOutForm product={sneaker[0]} setLoading={setLoading} setLoadingMessage={setLoadingMessage}/>
+  }
+
 
   if (loading) {
     return <Loading message={loadingMessage} />;
@@ -43,17 +53,16 @@ export default function IndividualPage({ sneaker, stripeKey }) {
               style={{ cursor: "pointer" }}
             >
               <img
-                src="/arrow.png"
+                src="/arrowleft.png"
                 alt="Go Back"
                 className={styles.logo}
-                
+                style={{width:"50px",objectFit:"contain"}}
               />
             </div>
 
-            <motion.img
+            <img
               src={sneaker[0].main_picture_url}
               alt={sneaker[0]?.name}
-              whileHover={{ scale: 1.2 }}
               className={styles.productImage}
             />
           </div>
@@ -80,7 +89,7 @@ export default function IndividualPage({ sneaker, stripeKey }) {
                     <p>
                       Sizes Available:
                       {sneaker[0].size_range.map((size) => (
-                        <>{size} </>
+                        <span key={size}>{size} </span>
                       ))}
                     </p>
                   </div>
@@ -91,20 +100,7 @@ export default function IndividualPage({ sneaker, stripeKey }) {
                 </div>
               </div>
               {auth.user ? (
-                <StripeCheckout
-                  stripeKey={stripeKey}
-                  token={handleToken}
-                  name={sneaker[0].name}
-                  amount={sneaker[0]?.retail_price_cents}
-                  billingAddress
-                  shippingAddress
-                  zipCode
-                  ComponentClass="div"
-                  image={sneaker[0].main_picture_url}
-                  currency="USD"
-                >
-                  <button className={styles.cta}>Buy Now.</button>
-                </StripeCheckout>
+                  <button className={styles.cta} onClick={handleCheckOut}>Buy Now.</button>
               ) : (
                 <button
                   className={styles.cta}
@@ -151,8 +147,7 @@ export async function getStaticProps({ params }) {
   const data = await res.json();
   const sneakers = data.sneakers;
   const sneaker = sneakers.filter((sneaker) => sneaker.slug === params.id);
-  const stripeKey = process.env.PUBLISHABLE_KEY;
   return {
-    props: { sneaker, stripeKey },
+    props: { sneaker }
   };
 }

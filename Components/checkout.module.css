@@ -1,0 +1,88 @@
+.chekoutForm{
+    width: 500px;
+    height: 100%;
+    max-width: 90vw;
+    background: white;
+    display: grid;
+    place-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    padding: 30px;
+    border-radius: 20px;
+    position: relative;
+}
+
+.chekoutForm>main{
+    user-select: none ;
+
+}
+
+.chekoutForm>main>h1{
+    color: rgb(151, 146, 96);
+    text-align: center;
+    border-bottom: 1px solid rgb(151, 146, 96);
+    margin-bottom: 10px;
+}
+
+
+.checkoutProduct{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.checkoutProduct img{
+    width: 200px;
+}
+
+.checkoutProduct h2 {
+    color: rgb(70, 70, 70);
+    font-weight: 500;
+}
+
+
+
+.checkoutProduct h2>span { 
+    color:rgb(151, 146, 96);
+    margin-right: 10px;
+}
+
+.chekoutForm  iframe{
+    max-width: 90vw !important;
+}
+
+.successfulPay{
+    color: rgb(32, 143, 32);
+    min-height: 350px;
+    width: 90%;
+    max-width: 85vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: auto ;
+    text-align: center;
+}
+
+.successfulPay>h3{
+    text-align: center;
+}
+
+.tickIcon{
+    font-size: 100px !important;
+}
+
+.homeLink{
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    color: rgb(87, 87, 87);
+    cursor: pointer;
+}
+
+.homeLink:hover{
+    text-decoration: underline;
+}
