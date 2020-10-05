@@ -62,7 +62,7 @@ export default function CheckOutForm({ product,setLoading,setLoadingMessage }) {
         <main>
           <h1> SnkrMart Billing Centre </h1>
           <div className={styles.checkoutProduct}>
-            <img src={product.grid_picture_url} alt={product.nickname} />
+              <img src={product?.grid_picture_url} alt={product?.nickname} />
             <div>
               <h2>
                 <span>Product Name </span> {product.name}
