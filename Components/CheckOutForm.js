@@ -65,7 +65,7 @@ export default function CheckOutForm({ product,setLoading,setLoadingMessage }) {
               <img src={product?.grid_picture_url} alt={product?.nickname} />
             <div>
               <h2>
-                <span>Product Name </span> {product.name}
+                  <span>Product Name </span> {product?.name}
               </h2>
               <h2>
                 <span>Bill Number </span> {nanoid()}{" "}
