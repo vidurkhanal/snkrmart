@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext, createContext } from "react";
 import * as firebase from "firebase/app";
 import "firebase/auth";
+import 'firebase/firestore'
 import Cookies from "js-cookie";
 import { useRouter } from "next/router";
 
@@ -16,6 +17,8 @@ if (!firebase.apps.length) {
     appId: "1:49356319882:web:405dee189e204005aa9173",
   });
 }
+
+export const db = firebase.firestore()
 
 const authContext = createContext();
 
@@ -103,6 +106,7 @@ function useProvideAuth() {
       });
   };
 
+
   // Subscribe to user on mount
   // Because this sets state in the callback it will cause any ...
   // ... component that utilizes this hook to re-render with the ...
@@ -131,5 +135,6 @@ function useProvideAuth() {
     sendPasswordResetEmail,
     confirmPasswordReset,
     loginWithGoogle,
+    
   };
 }

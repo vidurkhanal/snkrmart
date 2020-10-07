@@ -3,12 +3,15 @@ import styles from "./checkout.module.css";
 import { nanoid } from "nanoid";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import {useRouter} from "next/router";
+import { db, useAuth } from "../utils/useAuth";
 
 export default function CheckOutForm({ product,setLoading,setLoadingMessage }) {
   const paypalRef = useRef();
   const [orderid, setOrderId] = useState(null);
   const [isSuccess, setIsSuccess] = useState(false);
   const router = useRouter()
+  const auth = useAuth();
+  
   useEffect(() => {
     window.paypal
       .Buttons({
@@ -30,6 +33,11 @@ export default function CheckOutForm({ product,setLoading,setLoadingMessage }) {
         onApprove: async (data, actions) => {
           const order = await actions.order.capture();
           if (order) {
+            db.collection("receipts").add({
+              ...order,
+              uid: auth.user.uid,
+              productName: product?.name,
+            });
             setIsSuccess(true);
             setOrderId(order.id);
           }
@@ -54,18 +62,19 @@ export default function CheckOutForm({ product,setLoading,setLoadingMessage }) {
           <CheckCircleIcon color="inherit" className={styles.tickIcon} />
           <h1>Payment Successful</h1>
           <h3>Your Order {orderid} has been received.</h3>
-          
-            <p className={styles.homeLink} onClick={backToHome}>Back To Home</p>
-         
+
+          <p className={styles.homeLink} onClick={backToHome}>
+            Back To Home
+          </p>
         </div>
       ) : (
         <main>
-          <h1> SnkrMart Billing Centre </h1>
+          <h1> SnkrMart Payment Centre </h1>
           <div className={styles.checkoutProduct}>
-              <img src={product?.grid_picture_url} alt={product?.nickname} />
+            <img src={product?.grid_picture_url} alt={product?.nickname} />
             <div>
               <h2>
-                  <span>Product Name </span> {product?.name}
+                <span>Product Name </span> {product?.name}
               </h2>
               <h2>
                 <span>Bill Number </span> {nanoid()}{" "}
