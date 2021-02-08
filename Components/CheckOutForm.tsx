@@ -2,18 +2,22 @@ import { useEffect, useRef, useState } from "react";
 import styles from "./checkout.module.css";
 import { nanoid } from "nanoid";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
-import {useRouter} from "next/router";
+import { useRouter } from "next/router";
 import { db, useAuth } from "../utils/useAuth";
 
-export default function CheckOutForm({ product,setLoading,setLoadingMessage }) {
+export default function CheckOutForm({
+  product,
+  setLoading,
+  setLoadingMessage,
+}) {
   const paypalRef = useRef();
   const [orderid, setOrderId] = useState(null);
   const [isSuccess, setIsSuccess] = useState(false);
-  const router = useRouter()
-  const auth = useAuth();
-  
+  const router = useRouter();
+  const auth: any = useAuth();
+
   useEffect(() => {
-    window.paypal
+    (window as any).paypal
       .Buttons({
         createOrder: (data, actions, err) => {
           return actions.order.create({
@@ -49,11 +53,11 @@ export default function CheckOutForm({ product,setLoading,setLoadingMessage }) {
       .render(paypalRef.current);
   }, [product]);
 
-  const backToHome = ()=>{
-    setLoadingMessage("Bouncing Back To Home")
-    setLoading(true)
-    router.push('/')
-  }
+  const backToHome = () => {
+    setLoadingMessage("Bouncing Back To Home");
+    setLoading(true);
+    router.push("/");
+  };
 
   return (
     <div className={styles.chekoutForm}>
@@ -81,7 +85,10 @@ export default function CheckOutForm({ product,setLoading,setLoadingMessage }) {
               </h2>
               <h2 style={{ marginBottom: "20px" }}>
                 <span>Total Bill</span>{" "}
-                {parseFloat(product?.retail_price_cents / 100)} USD{" "}
+                {parseFloat(
+                  ((product?.retail_price_cents / 100) as unknown) as string
+                )}{" "}
+                USD{" "}
               </h2>
               <span className={styles.tos}>
                 All The Payments Of SnkrMart are handled via Paypal so in case
